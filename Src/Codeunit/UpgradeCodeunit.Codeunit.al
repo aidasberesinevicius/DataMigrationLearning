@@ -3,24 +3,29 @@ codeunit 50100 "cmp Upgrade Codeunit"
     Subtype = Upgrade;
 
     trigger OnUpgradePerCompany()
+    var
+        UpgradeTag: Codeunit "Upgrade Tag";
+        CustomerFlowerSchemaChangesTagTok: Label 'cmp-customerflowerschemachanges-20221018', Locked = true;
     begin
-        if CheckDataVersionValid() then
-            UpgradeCustomerFlowers();
+        if UpgradeTag.HasUpgradeTag(CustomerFlowerSchemaChangesTagTok) then
+            exit;
+
+        UpgradeCustomerFlowers();
+
+        UpgradeTag.SetUpgradeTag(CustomerFlowerSchemaChangesTagTok);
     end;
 
     trigger OnUpgradePerDatabase()
-    begin
-        if CheckDataVersionValid() then
-            UpgradeFlowers();
-    end;
-
-    local procedure CheckDataVersionValid(): Boolean
     var
-        ModuleInfo: ModuleInfo;
+        UpgradeTag: Codeunit "Upgrade Tag";
+        FlowerSchemaChangesTagTok: Label 'cmp-flowerschemachanges-20221018', Locked = true;
     begin
-        if NavApp.GetCurrentModuleInfo(ModuleInfo) then
-            if ModuleInfo.DataVersion = Version.Create(1, 0, 0, 0) then
-                exit(true);
+        if UpgradeTag.HasUpgradeTag(FlowerSchemaChangesTagTok) then
+            exit;
+
+        UpgradeFlowers();
+
+        UpgradeTag.SetUpgradeTag(FlowerSchemaChangesTagTok);
     end;
 
     local procedure UpgradeCustomerFlowers()
