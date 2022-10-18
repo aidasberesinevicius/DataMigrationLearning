@@ -19,15 +19,19 @@ codeunit 50100 "cmp Upgrade Codeunit"
         ModuleInfo: ModuleInfo;
     begin
         if NavApp.GetCurrentModuleInfo(ModuleInfo) then
-            if ModuleInfo.DataVersion = Version.Create(0, 0, 0, 0) then
+            if ModuleInfo.DataVersion = Version.Create(1, 0, 0, 0) then
                 exit(true);
     end;
 
     local procedure UpgradeCustomerFlowers()
     var
+        CustomerFlowerNew: Record "cmp Customer Flower 2";
+        CustomerFlowerOld: Record "cmp Customer Flower";
         TableDataTransfer: DataTransfer;
     begin
         TableDataTransfer.SetTables(Database::"cmp Customer Flower", Database::"cmp Customer Flower 2");
+        TableDataTransfer.AddJoin(CustomerFlowerOld.FieldNo("Customer No."), CustomerFlowerNew.FieldNo("Customer No."));
+        TableDataTransfer.AddJoin(CustomerFlowerOld.FieldNo("Flower Code"), CustomerFlowerNew.FieldNo("Flower Code"));
         TableDataTransfer.CopyFields();
         Clear(TableDataTransfer);
     end;

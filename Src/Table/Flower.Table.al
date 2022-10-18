@@ -1,7 +1,7 @@
 table 50100 "cmp Flower"
 {
     DataClassification = CustomerContent;
-    DataPerCompany = true;
+    DataPerCompany = false;
     Caption = 'Flower';
     LookupPageId = "cmp Flower List";
     DrillDownPageId = "cmp Flower List";
