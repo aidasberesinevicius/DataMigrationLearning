@@ -30,9 +30,9 @@ codeunit 50100 "cmp Upgrade Codeunit"
         TableDataTransfer: DataTransfer;
     begin
         TableDataTransfer.SetTables(Database::"cmp Customer Flower", Database::"cmp Customer Flower 2");
-        TableDataTransfer.AddJoin(CustomerFlowerOld.FieldNo("Customer No."), CustomerFlowerNew.FieldNo("Customer No."));
-        TableDataTransfer.AddJoin(CustomerFlowerOld.FieldNo("Flower Code"), CustomerFlowerNew.FieldNo("Flower Code"));
-        TableDataTransfer.CopyFields();
+        TableDataTransfer.AddFieldValue(CustomerFlowerOld.FieldNo("Customer No."), CustomerFlowerNew.FieldNo("Customer No."));
+        TableDataTransfer.AddFieldValue(CustomerFlowerOld.FieldNo("Flower Code"), CustomerFlowerNew.FieldNo("Flower Code"));
+        TableDataTransfer.CopyRows();
         Clear(TableDataTransfer);
     end;
 
