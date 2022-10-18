@@ -2,7 +2,7 @@ page 50100 "cmp Customer Flower List"
 {
     Caption = 'Customer Flowers';
     PageType = List;
-    SourceTable = "cmp Customer Flower";
+    SourceTable = "cmp Customer Flower 2";
     UsageCategory = None;
 
     layout

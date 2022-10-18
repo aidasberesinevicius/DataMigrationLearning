@@ -20,7 +20,7 @@ page 50101 "cmp Flower List"
                 {
                     ToolTip = 'Specifies the value of the Description field.';
                 }
-                field("Scientific Name"; Rec."Scientific Name")
+                field("Scientific Name"; Rec."Scientific Name 2")
                 {
                     ToolTip = 'Specifies the value of the Scientific Name field.';
                 }

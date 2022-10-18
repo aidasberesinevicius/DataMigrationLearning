@@ -19,6 +19,12 @@ table 50100 "cmp Flower"
         field(30; "Scientific Name"; Text[20])
         {
             Caption = 'Scientific Name';
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Data type must be change to code.';
+        }
+        field(31; "Scientific Name 2"; Code[20])
+        {
+            Caption = 'Scientific Name';
         }
     }
 

@@ -1,11 +1,9 @@
-table 50101 "cmp Customer Flower"
+table 50102 "cmp Customer Flower 2"
 {
     DataClassification = CustomerContent;
     Caption = 'Customer Flower';
     LookupPageId = "cmp Customer Flower List";
     DrillDownPageId = "cmp Customer Flower List";
-    ObsoleteState = Removed;
-    ObsoleteReason = 'Flower Code must be extended.';
 
     fields
     {
@@ -14,7 +12,7 @@ table 50101 "cmp Customer Flower"
             Caption = 'Customer No.';
             TableRelation = Customer;
         }
-        field(2; "Flower Code"; Code[10])
+        field(2; "Flower Code"; Code[20])
         {
             Caption = 'Flower Code';
             TableRelation = "cmp Flower";
